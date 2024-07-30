@@ -1,8 +1,8 @@
 
 import asyncio
-from jsonplaceholder_requests import fetch_post_data,fetch_user_data
-from models import engine,Base,User,Post,Session
 from sqlalchemy.ext.asyncio import AsyncSession
+from models import engine,Base,User,Post,Session
+from jsonplaceholder_requests import fetch_post_data,fetch_user_data
 
 
 
