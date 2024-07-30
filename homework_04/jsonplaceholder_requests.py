@@ -14,12 +14,12 @@ async def fetch_json(session,url):
         return await response.json()
 
 
-async def get_user_data():
-    async with aiohttp.ClientSession() as users_get_data:
-        return await fetch_json(users_get_data,USERS_DATA_URL)
+async def fetch_user_data():
+    async with aiohttp.ClientSession() as session:
+        return await fetch_json(session, USERS_DATA_URL)
 
-async def get_post_data():
-    async with aiohttp.ClientSession() as posts_get_data:
-        return await fetch_json(posts_get_data, POSTS_DATA_URL)
+async def fetch_post_data():
+    async with aiohttp.ClientSession() as session:
+        return await fetch_json(session, POSTS_DATA_URL)
 
 

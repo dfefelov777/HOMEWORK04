@@ -13,7 +13,7 @@
 - закрытие соединения с БД
 """
 import asyncio
-from jsonplaceholder_requests import get_post_data,get_user_data
+from jsonplaceholder_requests import fetch_post_data,fetch_user_data
 from models import engine,Base,User,Post,Session
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -48,7 +48,7 @@ async def async_main():
     async with Session() as session:
         await db_init()
 
-        users_data, posts_data = await asyncio.gather(get_post_data(), get_user_data())
+        users_data, posts_data = await asyncio.gather(fetch_post_data(), fetch_user_data())
         await create_users(session, users_data())
         await create_posts(session, posts_data())
 

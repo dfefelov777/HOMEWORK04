@@ -11,7 +11,7 @@ import os
 from sqlalchemy.ext.asyncio import  create_async_engine, AsyncSession
 from sqlalchemy.ext.declarative import  declarative_base
 from sqlalchemy.orm import sessionmaker,relationship
-from  sqlalchemy import Column,String,Integer, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://user:example@localhost:5432/postgres"
 
@@ -39,7 +39,7 @@ class User(Base):
 class Post(Base):
     __tablename__="posts"
     id=Column(Integer,primary_key=True,index=True)
-    user_id=Column(Integer,nullable=False,ForeignKey=("user.id"))
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     title=Column(String(32),nullable=False,unique=True)
     body=Column(String,nullable=True,unique=True)
     users = relationship(
